@@ -8,7 +8,6 @@
   padding-top: 40px;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .profile__info {
@@ -46,7 +45,7 @@
 .profile__description {
   font-family: "Inter" Arial, sans-serif;
   font-size: 18px;
-  line-height: 22x;
+  line-height: 22px;
   font-weight: 400;
   grid-area: description;
   margin: 0;
