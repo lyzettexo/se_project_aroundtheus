@@ -21,7 +21,7 @@
 @media screen and (max-width: 1200px) {
   .page__section {
     margin: 0 20px;
-    max-width: calc(100%-40px);
+    max-width: 100%;
   }
 }
 
