@@ -58,6 +58,9 @@
   border: none;
 }
 
+.card__like-button:hover {
+}
+
 @media screen and (max-width: 568px) {
   .card__list {
     padding: 15px 0 18px;
