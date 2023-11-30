@@ -30,6 +30,8 @@
 }
 
 .profile__edit-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 .profile__add-button {
@@ -40,9 +42,12 @@
   border-color: #fff;
   border-width: 2px;
   border-style: solid;
+  border-radius: 2px;
 }
 
 .profile__add-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 .profile__title {
@@ -52,6 +57,10 @@
   font-weight: 500;
   grid-area: title;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 373px;
 }
 
 .profile__description {
@@ -61,7 +70,10 @@
   font-weight: 400;
   grid-area: description;
   margin: 0;
-  max-width: 373px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 415px;
 }
 
 .profile__avatar {

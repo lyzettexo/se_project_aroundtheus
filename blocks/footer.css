@@ -5,6 +5,9 @@
   font-size: 18px;
   line-height: 22px;
   width: 100%;
-  height: 18px;
   margin-left: 200px;
+}
+
+.footer__copyright {
+  margin: 0;
 }
