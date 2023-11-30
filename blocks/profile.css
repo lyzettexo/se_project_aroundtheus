@@ -24,6 +24,12 @@
   height: 24px;
   width: 24px;
   grid-area: button;
+  border-color: #fff;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.profile__edit-button:hover {
 }
 
 .profile__add-button {
@@ -31,10 +37,16 @@
   height: 50px;
   width: 150px;
   margin-left: auto;
+  border-color: #fff;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.profile__add-button:hover {
 }
 
 .profile__title {
-  font-family: "Inter" Arial, sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   font-size: 42px;
   line-height: 48px;
   font-weight: 500;
@@ -43,7 +55,7 @@
 }
 
 .profile__description {
-  font-family: "Inter" Arial, sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   font-size: 18px;
   line-height: 22px;
   font-weight: 400;

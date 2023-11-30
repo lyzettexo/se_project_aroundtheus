@@ -1,6 +1,7 @@
 .header {
   margin-top: 45px;
   max-width: 880px;
+  border-bottom: rgb(84 84 84 / 0.7);
 }
 
 .header__image {
