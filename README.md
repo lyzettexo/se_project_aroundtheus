@@ -1,10 +1,11 @@
 Project 3: Around The U.S.
 
 Overview:
--Project Name
--Project Description
--Technologies Used
--Link to Github
+
+1. Project Name
+2. Project Description
+3. Technologies Used
+4. Link to Github
 
 Project Name:
 
