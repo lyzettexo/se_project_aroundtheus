@@ -21,4 +21,4 @@ Around The U.S. utilitzes the HTML and CSS functions learned in Sprint 1 and Spr
 
 Link to Github:
 
-https://github.com/lyzettexo/se_project_aroundtheus
+https://lyzettexo.github.io/se_project_aroundtheus/
