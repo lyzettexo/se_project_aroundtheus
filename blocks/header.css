@@ -1,22 +1,26 @@
 .header {
-  min-height: 74px;
+  min-height: 120px;
   border-bottom: 1px solid rgb(84 84 84 / 0.7);
   margin-bottom: 40px;
   margin-top: 45px;
   margin-left: 200px;
+  display: flex;
+  align-items: center;
 }
 
 .header__image {
   width: 173px;
   height: 33px;
+  object-fit: contain;
 }
 
 @media screen and (max-width: 620px) {
+  .header {
+    min-height: 85px;
+  }
   .header__image {
     width: 126px;
     height: 24px;
-    margin-top: 28px;
-    margin-left: 27px;
-    margin-bottom: 0;
+    margin: 0 0 0 27px;
   }
 }

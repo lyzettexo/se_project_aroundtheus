@@ -5,8 +5,8 @@
 }
 
 .page__section {
-  max-width: 880px;
   width: 100%;
+  max-width: 880px;
   position: relative;
   margin: 0 auto;
   box-sizing: border-box;
@@ -16,16 +16,11 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding: 0 20px;
 }
 
-@media screen and (max-width: 1200px) {
-  .page__section {
-    max-width: 100%;
-  }
-}
-
-@media screen and (min-width: 620px) {
-  .page__section {
-    margin-top: 45px;
+@media screen and (max-width: 620px) {
+  .page__content {
+    padding: 0;
   }
 }
