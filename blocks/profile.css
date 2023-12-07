@@ -93,6 +93,7 @@
 @media screen and (max-width: 780px) {
   .profile {
     flex-direction: column;
+    margin-top: 0;
   }
 
   .profile__avatar {
