@@ -1,24 +1,150 @@
-modal {
+.modal {
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  z-index: 1;
+  z-index: 999;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  padding: 0 19px;
 }
 
-modal.container {
+.modal_opened {
+  display: flex;
+}
+
+.modal__heading {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29.05px;
+  color: black;
+  width: 330px;
+  height: 23px;
+  margin: 34px 64px 54px 0;
+}
+
+.modal__container {
+  position: relative;
   padding: 36px;
-  background-color: white;
+  background-color: #fff;
   border-radius: 10px;
+  width: 430px;
+  height: 330px;
+  border: 1px;
+  border-color: black;
+}
+
+.modal__button {
+  background-color: black;
+  width: 358px;
+  height: 50.15px;
+  border-radius: 2px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.78px;
+  margin-right: 36px;
+  margin-bottom: 36px;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+.modal__button:hover {
+  opacity: 0.8;
 }
 
 .modal__close {
-  background-image: url(../images/Close\ Icon.svg);
   border: none;
   background-color: transparent;
+  position: absolute;
+  background-image: url(../images/Close\ Icon.svg);
+  height: 40px;
+  width: 40px;
+  top: -45px;
+  right: -45px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.modal__close:hover {
+  opacity: 0.6;
+}
+
+.modal__input1 {
+  width: 358px;
+  height: 27.34px;
+  margin-bottom: 29.74px;
+  border: none;
+  border-bottom: 1px solid rgb(0 0 0 / 0.2);
+  display: block;
+  width: 100%;
+}
+
+.modal__input1::placeholder {
+  color: black;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.94px;
+}
+
+.modal__input2 {
+  width: 358px;
+  height: 27.34px;
+  margin-bottom: 48px;
+  border: none;
+  border-bottom: 1px solid rgb(0 0 0 / 0.2);
+  display: block;
+  width: 100%;
+}
+
+.modal__input2::placeholder {
+  color: black;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.94px;
+}
+
+@media screen and (max-width: 568px) {
+  .modal__container {
+    width: 282px;
+    height: 322px;
+  }
+
+  .modal__heading {
+    width: 238px;
+    height: 22px;
+    line-height: 22px;
+    margin-bottom: 75px;
+  }
+
+  .modal__close {
+    height: 26px;
+    width: 26px;
+    margin-right: 18px;
+  }
+
+  .modal__button {
+    background-color: black;
+    width: 238px;
+    height: 46px;
+    display: block;
+    width: 100%;
+  }
+
+  .modal__input1 {
+    width: 238px;
+    margin-bottom: 30px;
+    display: block;
+    width: 100%;
+  }
+
+  .modal__input2 {
+    margin-bottom: 45px;
+  }
 }
