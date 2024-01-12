@@ -26,7 +26,11 @@
           <div class="profile__info">
             <div class="profile__title-items">
               <h1 class="profile__title">Jacques Cousteau</h1>
-              <button class="profile__edit-button" type="button"></button>
+              <button
+                class="profile__edit-button"
+                id="profile-edit-button"
+                type="button"
+              ></button>
             </div>
             <p class="profile__description">Explorer</p>
           </div>
@@ -108,9 +112,16 @@
       </footer>
     </div>
 
-    <div class="modal">
+    <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
-        <button class="modal__close"></button>
+        <div id="modal-close-button">
+          <button
+            class="modal__close"
+            id="profile-close-button"
+            type="button"
+          ></button>
+        </div>
+
         <p class="modal__heading">Edit Profile</p>
         <form class="modal__form">
           <input
