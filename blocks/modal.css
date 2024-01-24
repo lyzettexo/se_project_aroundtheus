@@ -76,7 +76,7 @@
   opacity: 0.6;
 }
 
-.modal__input1 {
+.modal__name {
   width: 358px;
   height: 27.34px;
   margin-bottom: 29.74px;
@@ -86,14 +86,14 @@
   width: 100%;
 }
 
-.modal__input1::placeholder {
+.modal__name::placeholder {
   color: black;
   font-weight: 400;
   font-size: 14px;
   line-height: 16.94px;
 }
 
-.modal__input2 {
+.modal__job {
   width: 358px;
   height: 27.34px;
   margin-bottom: 48px;
@@ -103,7 +103,7 @@
   width: 100%;
 }
 
-.modal__input2::placeholder {
+.modal__job::placeholder {
   color: black;
   font-weight: 400;
   font-size: 14px;
