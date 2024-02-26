@@ -48,6 +48,10 @@
   cursor: pointer;
 }
 
+.card__button-active {
+  background-image: url(../images/like-clicked.png);
+}
+
 @media screen and (max-width: 568px) {
   .card__list {
     padding: 15px 0 18px;
