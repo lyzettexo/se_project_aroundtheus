@@ -30,6 +30,8 @@ const initialCards = [
   },
 ];
 
+console.log(initialCards);
+
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileCloseButton = document.querySelector("#profile-close-button");
@@ -76,11 +78,5 @@ function getCardElement(data) {
   cardTitle.textContent = data.name;
   cardImage.src = data.link;
   cardImage.alt = data.name;
-
-  const likeButton = cardElement.querySelector(".card__like-button");
-  likeButton.addEventListener("click", () =>
-    likeButton.classList.toggle("card__button-active")
-  );
-
   return cardElement;
 }
