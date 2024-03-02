@@ -4,7 +4,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  z-index: 999;
+  z-index: 1;
   display: none;
   align-items: center;
   justify-content: center;
@@ -22,20 +22,21 @@
   font-size: 24px;
   line-height: 29.05px;
   color: black;
-  width: 330px;
-  height: 23px;
-  margin: 34px 64px 54px 0;
+  margin: 0 0 54px 0;
 }
 
 .modal__container {
+  box-sizing: border-box;
   position: relative;
   padding: 36px;
   background-color: #fff;
   border-radius: 10px;
-  width: 430px;
-  height: 330px;
-  border: 1px;
-  border-color: black;
+  box-shadow: 0px 0px 25px 0px rgba(0 0 0 /0.15);
+  width: 440px;
+  max-width: 430px;
+  width: 100%;
+  min-height: 323px;
+  padding: 34px 36px;
 }
 
 .modal__button {
@@ -47,15 +48,15 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 21.78px;
-  margin-right: 36px;
-  margin-bottom: 36px;
   display: block;
   width: 100%;
   cursor: pointer;
+  border: none;
 }
 
 .modal__button:hover {
   opacity: 0.8;
+  transition: 0.5s ease;
 }
 
 .modal__close {
@@ -74,36 +75,23 @@
 
 .modal__close:hover {
   opacity: 0.6;
+  transition: 0.5s ease;
 }
 
-.modal__name {
-  width: 358px;
-  height: 27.34px;
+.modal__inputs {
+  box-sizing: border-box;
   margin-bottom: 29.74px;
   border: none;
   border-bottom: 1px solid rgb(0 0 0 / 0.2);
   display: block;
   width: 100%;
-}
-
-.modal__name::placeholder {
-  color: black;
-  font-weight: 400;
   font-size: 14px;
-  line-height: 16.94px;
+  line-height: 17px;
+  font-weight: 400;
+  padding-bottom: 13px;
 }
 
-.modal__job {
-  width: 358px;
-  height: 27.34px;
-  margin-bottom: 48px;
-  border: none;
-  border-bottom: 1px solid rgb(0 0 0 / 0.2);
-  display: block;
-  width: 100%;
-}
-
-.modal__job::placeholder {
+.modal__inputs::placeholder {
   color: black;
   font-weight: 400;
   font-size: 14px;
@@ -112,39 +100,29 @@
 
 @media screen and (max-width: 568px) {
   .modal__container {
-    width: 282px;
-    height: 322px;
+    max-width: 282px;
+    padding: 25px 22px;
   }
 
   .modal__heading {
-    width: 238px;
-    height: 22px;
     line-height: 22px;
     margin-bottom: 75px;
+    font-size: 22px;
   }
 
   .modal__close {
     height: 26px;
     width: 26px;
-    margin-right: 18px;
+    left: calc(100% - 35px);
+    bottom: calc(100% + 14px);
   }
 
   .modal__button {
-    background-color: black;
-    width: 238px;
-    height: 46px;
-    display: block;
-    width: 100%;
+    font-size: 18px;
+    line-height: 22px;
   }
 
-  .modal__input1 {
-    width: 238px;
-    margin-bottom: 30px;
-    display: block;
-    width: 100%;
-  }
-
-  .modal__input2 {
-    margin-bottom: 45px;
+  #modal_name {
+    font-size: 100px;
   }
 }

@@ -52,8 +52,8 @@ function closePopup() {
 }
 
 profileEditButton.addEventListener("click", () => {
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileDescription.textContent;
+  nameInput.value = profileTitle.textContent.trim();
+  jobInput.value = profileDescription.textContent.trim();
   profileEditModal.classList.add("modal_opened");
 });
 

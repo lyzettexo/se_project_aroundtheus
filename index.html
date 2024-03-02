@@ -53,31 +53,29 @@
 
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
-        <div id="modal-close-button">
-          <button
-            class="modal__close"
-            id="profile-close-button"
-            type="button"
-          ></button>
-        </div>
+        <button
+          class="modal__close"
+          id="profile-close-button"
+          type="button"
+        ></button>
 
-        <p class="modal__heading">Edit Profile</p>
-        <form class="modal__form" id="modal-form">
+        <h2 class="modal__heading">Edit Profile</h2>
+        <form class="modal__form" id="modal-form" name="modalForm">
           <input
-            class="modal__name"
+            class="modal__inputs"
             id="modal-name"
             type="text"
             name="title"
             placeholder="Jacques Cousteau"
           />
           <input
-            class="modal__job"
+            class="modal__inputs"
             id="modal-job"
             type="text"
             name="description"
             placeholder="Explorer"
           />
-          <button class="modal__button">Save</button>
+          <button class="modal__button" type="submit">Save</button>
         </form>
       </div>
     </div>
