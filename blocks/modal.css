@@ -103,9 +103,9 @@
   }
 
   .modal__heading {
-    line-height: 18px;
+    line-height: 22px;
     margin-bottom: 75px;
-    font-size: 22px;
+    font-size: 18px;
   }
 
   .modal__close {
@@ -118,10 +118,6 @@
   .modal__button {
     font-size: 14px;
     line-height: 17px;
-    height: 18px;
-  }
-
-  .modal__name {
-    font-size: 100px;
+    height: 46px;
   }
 }
