@@ -30,6 +30,7 @@
   width: 24px;
   grid-area: button;
   border: 1px solid white;
+  background-size: 10px;
 }
 
 .profile__edit-button:hover {
@@ -141,5 +142,6 @@
   .profile__edit-button {
     width: 18px;
     height: 18px;
+    background-size: 7.5px;
   }
 }
