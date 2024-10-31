@@ -38,14 +38,19 @@ const profileCloseButton = document.querySelector("#profile-close-button");
 
 const profileTitle = document.querySelector("#profile-title");
 const profileDescription = document.querySelector("#profile-description");
+
+
 const nameInput = document.querySelector("#modal-name");
 const jobInput = document.querySelector("#modal-job");
+
 const profileEditForm = profileEditModal.querySelector("#modal-form");
 
 const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
+  document.querySelector("#card-template").content.querySelector('.places__item');
 
 const cardList = document.querySelector(".cards__list");
+
+const cardAddModal = document.querySelector('#add-modal')
 
 function closePopup() {
   profileEditModal.classList.remove("modal_opened");
@@ -66,6 +71,7 @@ profileEditForm.addEventListener("submit", (e) => {
   closePopup();
 });
 
+/*
 initialCards.forEach((data) => {
   const cardElement = getCardElement(data);
   cardList.append(cardElement);
@@ -73,10 +79,35 @@ initialCards.forEach((data) => {
 
 function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardTitle = cardElement.querySelector(".card__title");
+  const cardImage = cardElement.querySelector(".card__image").style.backgroundImage = card.link;
+  const cardTitle = cardElement.querySelector(".card__title").textContent = card.name;
   cardTitle.textContent = data.name;
   cardImage.src = data.link;
   cardImage.alt = data.name;
   return cardElement;
 }
+
+*/
+
+function generateCard(card) {
+
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardImage = cardElement.querySelector(".card__image").style.backgroundImage = `url(${card.link})`;
+  const cardTitle = cardElement.querySelector(".card__title").textContent = card.name;
+  return cardElement;
+
+}
+
+function renderCard(card, container) {
+  container.append(card);
+
+}
+
+
+initialCards.forEach(function(card) {
+
+  const newCard = generateCard(card); 
+  renderCard(newCard, cardList);
+
+});
+
