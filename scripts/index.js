@@ -36,6 +36,7 @@ const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileCloseButton = document.querySelector("#profile-close-button");
 
+
 const profileTitle = document.querySelector("#profile-title");
 const profileDescription = document.querySelector("#profile-description");
 
@@ -50,26 +51,58 @@ const cardTemplate =
 
 const cardList = document.querySelector(".cards__list");
 
-const cardAddModal = document.querySelector('#add-modal')
+//const cardAddModal = document.querySelector('#add-modal')
 
-function closePopup() {
-  profileEditModal.classList.remove("modal_opened");
+const addModalButton = document.querySelector(".profile__add-button")
+
+const addModalWindow = document.querySelector("#js-add-modal");
+const editModalWindow = document.querySelector(".js-edit-modal");
+
+const addModalCloseButton = addModalWindow.querySelector(".modal__close");
+
+
+const editModalCloseButton = editModalWindow.querySelector(".modal__close");
+
+
+
+
+function closePopup(modal) {
+modal.classList.remove("modal_opened");
 }
 
-profileEditButton.addEventListener("click", () => {
+
+function toggleModalWindow (modal) {
+  modal.classList.add("modal_opened");
+}
+
+
+profileEditButton.addEventListener("click", () =>
+  {
   nameInput.value = profileTitle.textContent.trim();
   jobInput.value = profileDescription.textContent.trim();
-  profileEditModal.classList.add("modal_opened");
+  toggleModalWindow(profileEditModal)
 });
-
-profileCloseButton.addEventListener("click", closePopup);
 
 profileEditForm.addEventListener("submit", (e) => {
   e.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
-  closePopup();
+  closePopup(profileEditModal);
 });
+
+
+addModalButton.addEventListener("click", () => toggleModalWindow(addModalWindow));
+
+addModalCloseButton.addEventListener("click", () => {
+  closePopup(addModalWindow);
+})
+
+profileCloseButton.addEventListener("click", () => {
+  closePopup(profileEditModal);
+})
+
+//editModalCloseButton.addEventListener("click", () => toggleModalWindow(editModalWindow));
+
 
 /*
 initialCards.forEach((data) => {
@@ -92,8 +125,16 @@ function getCardElement(data) {
 function generateCard(card) {
 
   const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image").style.backgroundImage = `url(${card.link})`;
   const cardTitle = cardElement.querySelector(".card__title").textContent = card.name;
+  
+  const imageEl = cardElement.querySelector(".card__image");
+
+  imageEl.style.backgroundImage = `url(${card.link})`;
+  
+  imageEl.addEventListener("click", function(){
+    toggleModalWindow();
+  })
+
   return cardElement;
 
 }

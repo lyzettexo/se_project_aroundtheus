@@ -51,9 +51,7 @@
       </footer>
     </div>
 
-  
-
-    <div class="modal" id="profile-edit-modal">
+    <div class="modal js-edit-modal" id="profile-edit-modal">
       <div class="modal__container">
         <button
           class="modal__close"
@@ -82,7 +80,52 @@
       </div>
     </div>
 
-    <template id="card-template">
+    <div id="js-add-modal" class="modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          id="profile-close-button"
+          type="button"
+        ></button>
+
+        <h2 class="modal__heading">New Place</h2>
+        <form class="modal__form" id="modal-form" name="modalForm">
+          <input
+            class="modal__inputs modal__title"
+            id="modal-title"
+            type="text"
+            name="title"
+            placeholder="title"
+          />
+          <input
+            class="modal__inputs modal__description"
+            id="modal-job"
+            type="text"
+            name="description"
+            placeholder="Image Link"
+          />
+          <button class="modal__button" type="submit">Create</button>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="modal" style="display: flex;">
+      <div class="modal__container popup__content_type_preview">
+        <button
+          class="modal__close" id="profile-close-button" type="button">
+        </button>
+      <img class="popup__preview-image" 
+      src="https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg" 
+      alt=""/>
+      </div>
+      </div>
+
+    
+
+
+
+  <template id="card-template">
       <li class=" places__item card">
         <div class="card__image"></div>
         <div class="card__description">
