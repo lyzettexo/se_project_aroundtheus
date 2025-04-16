@@ -4,6 +4,7 @@
   flex-direction: column;
   border-radius: 10px;
   list-style-type: none;
+  position: relative;
   overflow: hidden;
 }
 
@@ -46,6 +47,25 @@
 .card__like-button:hover {
   opacity: 0.5;
   cursor: pointer;
+}
+
+.card__like-button_active {
+  background-image: url("../images/likebuttonactive.svg");
+}
+
+.card__delete-button {
+  background: transparent url(../images/delete-button.svg) center no-repeat;
+  width: 18px;
+  height: 19.3px;
+  border: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #ffffff;
+}
+
+.card__delete-button:hover {
+  opacity: 60%;
 }
 
 @media screen and (max-width: 568px) {
