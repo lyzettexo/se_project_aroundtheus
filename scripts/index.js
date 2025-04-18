@@ -2,38 +2,42 @@ const initialCards = [
   {
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+    alt: "Yosemite Valley sky and mountain top",
   },
 
   {
     name: "Lake Louise",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+    alt: "Sky and two mountain tops with Lake Louise running through the bottom",
   },
 
   {
     name: "Bald Mountains",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+    alt: "Sunrise over large mountains",
   },
 
   {
     name: "Latemar",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+    alt: "Starry sky over gray rocky mountains",
   },
 
   {
     name: "Vanoise National Park ",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+    alt: "Mountain background with tall pine trees and river running through them",
   },
 
   {
     name: "Lago di Braies",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+    alt: "Tall mountains with a green river and canoes at dock",
   },
 ];
 
-console.log(initialCards);
-
 const profileEditButton = document.querySelector("#profile-edit-button");
-//dupes
+
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const editModalWindow = document.querySelector(".js-edit-modal");
 
@@ -64,7 +68,12 @@ const previewImageModalWindow = document.querySelector("#preview-image-modal");
 
 const previewImageElement = document.querySelector(".modal__preview-image");
 
-const previewModalCloseButton = document.querySelector("#preview-close-button");
+const previewModalCloseButton =
+  previewImageModalWindow.querySelector(".modal__close");
+
+const previewModalCaption = previewImageModalWindow.querySelector(
+  ".modal__preview-caption"
+);
 
 const cardTitleInput = addCardFormElement.querySelector(".modal__title");
 const cardUrlInput = addCardFormElement.querySelector(".modal__new_location");
@@ -73,14 +82,14 @@ function closePopup(modal) {
   modal.classList.remove("modal_opened");
 }
 
-function toggleModalWindow(modal) {
+function openPopup(modal) {
   modal.classList.add("modal_opened");
 }
 
 profileEditButton.addEventListener("click", () => {
   nameInput.value = profileTitle.textContent.trim();
   jobInput.value = profileDescription.textContent.trim();
-  toggleModalWindow(profileEditModal);
+  openPopup(profileEditModal);
 });
 
 profileEditForm.addEventListener("submit", (e) => {
@@ -90,9 +99,13 @@ profileEditForm.addEventListener("submit", (e) => {
   closePopup(profileEditModal);
 });
 
-addModalButton.addEventListener("click", () =>
-  toggleModalWindow(addModalWindow)
-);
+addModalButton.addEventListener("click", () => openPopup(addModalWindow));
+
+/* function clearInput() {
+  const modalInputsClear = document.querySelector(".modal__inputs")
+  modalInputsClear.value = '';
+ }
+*/
 
 addModalCloseButton.addEventListener("click", () => {
   closePopup(addModalWindow);
@@ -108,33 +121,6 @@ previewModalCloseButton.addEventListener("click", () => {
 
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
-//editModalCloseButton.addEventListener("click", () => toggleModalWindow(editModalWindow));
-
-/*
-initialCards.forEach((data) => {
-  const cardElement = getCardElement(data);
-  cardList.append(cardElement);
-});
-
-/*
-function getCardElement(data) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image").style.backgroundImage = card.link;
-  const cardTitle = cardElement.querySelector(".card__title").textContent = card.name;
-  const likeButton = card.cardElement.querySelector(".card__like-button");
-  
-  
-  
-  
-  
-  cardTitle.textContent = data.name;
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
-  return cardElement;
-}
-
-*/
-
 function generateCard(card) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardTitle = (cardElement.querySelector(".card__title").textContent =
@@ -144,11 +130,14 @@ function generateCard(card) {
   const cardDeleteButton = cardElement.querySelector(".card__delete-button");
   const imageEl = cardElement.querySelector(".card__image");
 
-  imageEl.style.backgroundImage = `url(${card.link})`;
+  imageEl.src = card.link;
+  imageEl.alt = card.alt;
 
   imageEl.addEventListener("click", function () {
     previewImageElement.src = card.link;
-    toggleModalWindow(previewImageModalWindow);
+    previewImageElement.alt = card.alt;
+    previewModalCaption.textContent = card.name;
+    openPopup(previewImageModalWindow);
   });
 
   cardLikeButton.addEventListener("click", function (evt) {

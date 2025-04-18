@@ -12,6 +12,7 @@
   width: 282px;
   height: 282px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .card__description {
@@ -66,6 +67,7 @@
 
 .card__delete-button:hover {
   opacity: 60%;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 568px) {

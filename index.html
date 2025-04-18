@@ -83,7 +83,7 @@
     <div id="js-add-modal" class="modal">
       <div class="modal__container">
         <button
-          class="modal__close"
+          class="modal__close close__add-modal"
           id="add-card-close-button"
           type="button"
         ></button>
@@ -95,7 +95,7 @@
             id="modal-title"
             type="text"
             name="title"
-            placeholder="title"
+            placeholder="TITLE"
           />
           <input
             class="modal__inputs modal__new_location"
@@ -112,17 +112,18 @@
     <div class="modal" id="preview-image-modal">
       <div class="modal__container modal__container_type_preview">
         <button
-          class="modal__close"
+          class="modal__close modal__new-close-button"
           id="preview-close-button"
           type="button"
         ></button>
         <img class="modal__preview-image" src="" alt="" />
+        <div class="modal__preview-caption"></div>
       </div>
     </div>
 
     <template id="card-template">
       <li class="places__item card">
-        <div class="card__image"></div>
+        <img class="card__image" />
         <button type="button" class="card__delete-button"></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
