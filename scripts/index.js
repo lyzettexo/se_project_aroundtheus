@@ -101,12 +101,6 @@ profileEditForm.addEventListener("submit", (e) => {
 
 addModalButton.addEventListener("click", () => openPopup(addModalWindow));
 
-/* function clearInput() {
-  const modalInputsClear = document.querySelector(".modal__inputs")
-  modalInputsClear.value = '';
- }
-*/
-
 addModalCloseButton.addEventListener("click", () => {
   closePopup(addModalWindow);
 });
@@ -173,6 +167,7 @@ function handleAddCardFormSubmit(e) {
     link,
   });
   renderCard(newCardElement, cardList);
+  e.target.reset();
   closePopup(addModalWindow);
 }
 
