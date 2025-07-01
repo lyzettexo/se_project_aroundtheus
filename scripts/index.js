@@ -56,6 +56,8 @@ const cardTemplate = document
 
 const cardList = document.querySelector(".cards__list");
 
+const modals = document.querySelectorAll(".modal");
+
 const addModalButton = document.querySelector(".profile__add-button");
 
 const addModalWindow = document.querySelector("#js-add-modal");
@@ -86,9 +88,27 @@ function openPopup(modal) {
   modal.classList.add("modal_opened");
 }
 
+modals.forEach((modal) => {
+  modal.addEventListener("mousedown", (event) => {
+    if (event.target === modal) {
+      closePopup(modal);
+    }
+  });
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    const openModal = document.querySelector(".modal.modal_opened");
+    if (openModal) {
+      closePopup(openModal);
+    }
+  }
+});
+
 profileEditButton.addEventListener("click", () => {
   nameInput.value = profileTitle.textContent.trim();
   jobInput.value = profileDescription.textContent.trim();
+  resetValidation([nameInput, jobInput], config);
   openPopup(profileEditModal);
 });
 
@@ -170,7 +190,6 @@ function handleAddCardFormSubmit(e) {
   e.target.reset();
   closePopup(addModalWindow);
 }
-
 initialCards.forEach(function (card) {
   const newCard = generateCard(card);
   renderCard(newCard, cardList);

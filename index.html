@@ -61,21 +61,39 @@
 
         <h2 class="modal__heading">Edit Profile</h2>
         <form class="modal__form" id="modal-form" name="modalForm">
-          <input
-            class="modal__inputs"
-            id="modal-name"
-            type="text"
-            name="title"
-            placeholder="Jacques Cousteau"
-          />
-          <input
-            class="modal__inputs"
-            id="modal-job"
-            type="text"
-            name="description"
-            placeholder="Explorer"
-          />
-          <button class="modal__button" type="submit">Save</button>
+          <label class="modal__label" for="modal-name">
+            <input
+              class="modal__input"
+              id="modal-name"
+              type="text"
+              name="title"
+              placeholder="Jacques Cousteau"
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span class="modal__error" id="modal-name-error"></span>
+          </label>
+          <label class="modal__label" for="modal-job">
+            <input
+              class="modal__input"
+              id="modal-job"
+              type="text"
+              name="description"
+              placeholder="Explorer"
+              minlength="2"
+              maxlength="200"
+              required
+            />
+            <span class="modal__error" id="modal-job-error"></span>
+          </label>
+          <button
+            class="modal__button modal__button_disabled"
+            type="submit"
+            disabled
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>
@@ -90,21 +108,33 @@
 
         <h2 class="modal__heading">New Place</h2>
         <form class="modal__form" id="modal-form" name="modalForm">
-          <input
-            class="modal__inputs modal__title"
-            id="modal-title"
-            type="text"
-            name="title"
-            placeholder="TITLE"
-          />
-          <input
-            class="modal__inputs modal__new_location"
-            id="modal-new-place"
-            type="text"
-            name="description"
-            placeholder="Image Link"
-          />
-          <button class="modal__button" type="submit">Create</button>
+          <label class="modal__label" for="modal-title">
+            <input
+              class="modal__input modal__title"
+              id="modal-title"
+              type="text"
+              name="title"
+              placeholder="TITLE"
+              minlength="1"
+              maxlength="30"
+              required
+            />
+            <span class="modal__error" id="modal-title-error"></span>
+          </label>
+          <label class="modal__label" for="modal-new-place">
+            <input
+              class="modal__input modal__new_location"
+              id="modal-new-place"
+              type="url"
+              name="description"
+              placeholder="Image Link"
+              required
+            />
+            <span class="modal__error" id="modal-new-place-error"></span>
+          </label>
+          <button class="modal__button modal__button_disabled" type="submit">
+            Create
+          </button>
         </form>
       </div>
     </div>
@@ -133,5 +163,6 @@
     </template>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validation.js"></script>
   </body>
 </html>
