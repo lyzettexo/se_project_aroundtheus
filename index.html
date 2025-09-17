@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta
-      content="width=device-width, user-scalable=no, initial-scale=1.0 maximum-scale=1.0,
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,
      minimum-scale=1.0"
       name="viewport"
     />
@@ -101,13 +101,13 @@
     <div id="js-add-modal" class="modal">
       <div class="modal__container">
         <button
-          class="modal__close close__add-modal"
+          class="modal__close modal__close_type_add"
           id="add-card-close-button"
           type="button"
         ></button>
 
         <h2 class="modal__heading">New Place</h2>
-        <form class="modal__form" id="modal-form" name="modalForm">
+        <form class="modal__form" id="modal-form-place" name="modalForm">
           <label class="modal__label" for="modal-title">
             <input
               class="modal__input modal__title"
@@ -115,7 +115,7 @@
               type="text"
               name="title"
               placeholder="TITLE"
-              minlength="1"
+              minlength="2"
               maxlength="30"
               required
             />
@@ -123,7 +123,7 @@
           </label>
           <label class="modal__label" for="modal-new-place">
             <input
-              class="modal__input modal__new_location"
+              class="modal__input modal__input--new-location"
               id="modal-new-place"
               type="url"
               name="description"
@@ -162,7 +162,6 @@
       </li>
     </template>
 
-    <script src="./scripts/index.js"></script>
-    <script src="./scripts/validation.js"></script>
+    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>
