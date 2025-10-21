@@ -1,4 +1,4 @@
-export default class Card {
+export class Card {
   constructor({ name, link, alt }, cardSelector, handleImageClick) {
     this.name = name;
     this.link = link;
@@ -7,7 +7,7 @@ export default class Card {
     this.handleImageClick = handleImageClick;
   }
 
-  setEventListeners() {
+  _setEventListeners() {
     this._cardElement
       .querySelector(".card__like-button")
       .addEventListener("click", (evt) => {
@@ -38,7 +38,7 @@ export default class Card {
     image.src = this.link;
     image.alt = this.alt;
 
-    this.setEventListeners();
+    this._setEventListeners();
     return this._cardElement;
   }
 }
