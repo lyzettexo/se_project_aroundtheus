@@ -23,7 +23,7 @@ const avatarInput = document.querySelector("#avatar-link-input");
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: "1c060120-eeba-4161-a8c7-48a99c7b9071",
+    authorization: "b1a45cb5-ae91-4e03-a155-fe5192708e0e",
     "Content-Type": "application/json",
   },
 });
@@ -59,7 +59,7 @@ function createCard(cardData) {
   const card = new Card(
     cardData,
     "#card-template",
-    (name, link) => imagePopup.open(name, link),
+    (name, link) => imagePopup.open({ name, link }),
     () => {
       deleteConfirmationPopup.setSubmitAction(() => {
         api
@@ -77,14 +77,14 @@ function createCard(cardData) {
         api
           .unlikeCard(card._id)
           .then((updatedCard) => {
-            card.setLikes(updatedCard.likes);
+            card.setLikes(updatedCard);
           })
           .catch(console.log);
       } else {
         api
           .likeCard(card._id)
           .then((updatedCard) => {
-            card.setLikes(updatedCard.likes);
+            card.setLikes(updatedCard);
           })
           .catch(console.log);
       }
@@ -106,8 +106,10 @@ const cardSection = new Section(
   ".cards__list"
 );
 
-// ------------------- AVATAR POPUP ------------------- //
-const editAvatarPopup = new PopupWithForm("#avatar-edit-modal", (formData) => {
+// ------------------- AVATAR EDIT POPUP ------------------- //
+const avatarPopup = new PopupWithForm("#avatar-edit-modal", (formData) => {
+  avatarPopup.renderLoading(true);
+
   api
     .updateAvatar(formData.avatar)
     .then((userData) => {
@@ -116,12 +118,15 @@ const editAvatarPopup = new PopupWithForm("#avatar-edit-modal", (formData) => {
         about: userData.about,
         avatar: userData.avatar,
       });
-      editAvatarPopup.close();
+      avatarPopup.close();
     })
-    .catch(console.log);
+    .catch(console.log)
+    .finally(() => {
+      avatarPopup.renderLoading(false);
+    });
 });
 
-editAvatarPopup.setEventListeners();
+avatarPopup.setEventListeners();
 
 const avatarFormValidator = new FormValidator(validationConfig, avatarForm);
 avatarFormValidator.enableValidation();
@@ -129,19 +134,23 @@ avatarFormValidator.enableValidation();
 avatarEditButton.addEventListener("click", () => {
   avatarInput.value = "";
   avatarFormValidator.resetValidation();
-  editAvatarPopup.open();
+  avatarPopup.open();
 });
 
 // ------------------- ADD CARD POPUP ------------------- //
 const addCardPopup = new PopupWithForm("#js-add-modal", (formData) => {
+  addCardPopup.renderLoading(true);
+
   api
     .addCard({ name: formData.title, link: formData.description })
     .then((cardData) => {
       cardSection.addItem(createCard(cardData));
-      addCardForm.reset();
       addCardPopup.close();
     })
-    .catch(console.log);
+    .catch(console.log)
+    .finally(() => {
+      addCardPopup.renderLoading(false);
+    });
 });
 
 addCardPopup.setEventListeners();
@@ -150,6 +159,8 @@ addCardPopup.setEventListeners();
 const editProfilePopup = new PopupWithForm(
   "#profile-edit-modal",
   (formData) => {
+    editProfilePopup.renderLoading(true);
+
     api
       .updateUserInfo({
         name: formData.title,
@@ -163,7 +174,10 @@ const editProfilePopup = new PopupWithForm(
         });
         editProfilePopup.close();
       })
-      .catch(console.log);
+      .catch(console.log)
+      .finally(() => {
+        editProfilePopup.renderLoading(false);
+      });
   }
 );
 
@@ -199,6 +213,10 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cardsData]) => {
     currentUserId = userData._id;
 
+    console.log("USER DATA:", userData);
+    console.log("CARDS DATA:", cardsData);
+    console.log("CARDS LENGTH:", cardsData.length);
+
     userInfo.setUserInfo({
       name: userData.name,
       about: userData.about,
@@ -208,4 +226,6 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     cardSection.setItems(cardsData);
     cardSection.renderItems();
   })
-  .catch(console.log);
+  .catch((err) => {
+    console.error("INITIAL DATA FAILED:", err);
+  });
