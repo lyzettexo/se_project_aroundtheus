@@ -7,6 +7,7 @@ import { PopupWithImage } from "../components/PopupWithImage.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { PopupConfirmation } from "../components/PopupConfirmation.js";
 import { Api } from "../components/Api.js";
+import { validationConfig } from "../utils/constants.js";
 
 // ------------------- DOM ELEMENTS ------------------- //
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -27,15 +28,6 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-
-// ------------------- VALIDATION CONFIG ------------------- //
-const validationConfig = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
 
 // ------------------- USER INFO ------------------- //
 const userInfo = new UserInfo({
@@ -146,6 +138,7 @@ const addCardPopup = new PopupWithForm("#js-add-modal", (formData) => {
     .then((cardData) => {
       cardSection.addItem(createCard(cardData));
       addCardPopup.close();
+      addCardForm.reset();
     })
     .catch(console.log)
     .finally(() => {
@@ -203,19 +196,14 @@ profileEditButton.addEventListener("click", () => {
 });
 
 addCardButton.addEventListener("click", () => {
-  addCardForm.reset();
-  cardFormValidator.resetValidation();
   addCardPopup.open();
 });
 
 // ------------------- DATA FETCHING ------------------- //
-Promise.all([api.getUserInfo(), api.getInitialCards()])
+api
+  .getAppInfo()
   .then(([userData, cardsData]) => {
     currentUserId = userData._id;
-
-    console.log("USER DATA:", userData);
-    console.log("CARDS DATA:", cardsData);
-    console.log("CARDS LENGTH:", cardsData.length);
 
     userInfo.setUserInfo({
       name: userData.name,
@@ -226,6 +214,4 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     cardSection.setItems(cardsData);
     cardSection.renderItems();
   })
-  .catch((err) => {
-    console.error("INITIAL DATA FAILED:", err);
-  });
+  .catch(console.error);

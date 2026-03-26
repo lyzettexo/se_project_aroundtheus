@@ -1,14 +1,6 @@
 export class Card {
   constructor(
-    {
-      name,
-      link,
-      alt = name,
-      _id,
-      owner = {},
-      isLiked = false,
-      likesCount = 0,
-    },
+    { name, link, alt = name, _id, owner = {}, isLiked = false },
     cardSelector,
     handleImageClick,
     handleDeleteClick,
@@ -20,7 +12,6 @@ export class Card {
     this._alt = alt;
     this._id = _id;
     this._isLiked = isLiked;
-    this._likesCount = likesCount ?? 0;
     this._ownerId = typeof owner === "string" ? owner : owner._id;
     this._currentUserId = currentUserId;
 
@@ -51,16 +42,7 @@ export class Card {
   }
 
   setLikes(cardData) {
-    const nextLikedState = cardData.isLiked ?? this._isLiked;
-
-    if (nextLikedState !== this._isLiked) {
-      this._likesCount = nextLikedState
-        ? this._likesCount + 1
-        : Math.max(0, this._likesCount - 1);
-    }
-
-    this._isLiked = nextLikedState;
-    this._likeCountElement.textContent = this._likesCount;
+    this._isLiked = cardData.isLiked ?? this._isLiked;
 
     this._likeButton.classList.toggle(
       "card__like-button_active",
@@ -86,14 +68,11 @@ export class Card {
       ".card__delete-button"
     );
     this._imageElement = this._cardElement.querySelector(".card__image");
-    this._likeCountElement =
-      this._cardElement.querySelector(".card__like-count");
 
     this._cardElement.querySelector(".card__title").textContent = this._name;
     this._imageElement.src = this._link;
     this._imageElement.alt = this._alt;
 
-    this._likeCountElement.textContent = this._likesCount;
     this._likeButton.classList.toggle(
       "card__like-button_active",
       this._isLiked

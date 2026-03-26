@@ -66,4 +66,8 @@ export class Api {
       body: JSON.stringify({ avatar }),
     });
   }
+
+  getAppInfo() {
+    return Promise.all([this.getUserInfo(), this.getInitialCards()]);
+  }
 }
