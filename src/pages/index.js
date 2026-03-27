@@ -139,6 +139,7 @@ const addCardPopup = new PopupWithForm("#js-add-modal", (formData) => {
       cardSection.addItem(createCard(cardData));
       addCardPopup.close();
       addCardForm.reset();
+      cardFormValidator.resetValidation();
     })
     .catch(console.log)
     .finally(() => {

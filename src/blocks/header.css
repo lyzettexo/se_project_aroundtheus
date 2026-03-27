@@ -1,27 +1,28 @@
 .header {
+  width: 100%;
   min-height: 120px;
+  margin: 45px 0 40px;
   border-bottom: 1px solid rgb(84 84 84 / 0.7);
-  margin-bottom: 40px;
-  margin-top: 45px;
-  margin-left: 200px;
   display: flex;
   align-items: center;
 }
 
 .header__image {
   width: 173px;
-  height: 33px;
+  height: auto;
   object-fit: contain;
 }
 
 @media screen and (max-width: 620px) {
   .header {
     min-height: 85px;
-    margin-left: 0;
+    width: 100%;
+    margin: 28px 0 32px;
   }
+
   .header__image {
     width: 126px;
-    height: 24px;
-    margin: 0 0 0 27px;
+    height: auto;
+    margin: 0;
   }
 }
