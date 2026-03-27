@@ -13,7 +13,7 @@
     <div class="page__content">
       <header class="header page__section">
         <img
-          src="<%=require('./images/around.svg')%>"
+          src="<%= require('./images/around.svg') %>"
           alt="US logo"
           class="header__image"
         />
@@ -21,11 +21,18 @@
 
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="Jacques Cousteau"
-            class="profile__avatar"
-          />
+          <div class="profile__avatar-container">
+            <img
+              src="<%= require('./images/jacques-cousteau.jpg') %>"
+              alt="Jacques Cousteau"
+              class="profile__avatar"
+            />
+            <button
+              class="profile__avatar-edit-button"
+              id="profile-avatar-edit-button"
+              type="button"
+            ></button>
+          </div>
           <div class="profile__info">
             <div class="profile__title-items">
               <h1 class="profile__title" id="profile-title">
@@ -164,5 +171,46 @@
         </div>
       </li>
     </template>
+
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          id="delete-card-close-button"
+          type="button"
+        ></button>
+
+        <h2 class="modal__heading">Are you sure?</h2>
+        <form class="modal__form" id="delete-card-form" name="deleteCardForm">
+          <button class="modal__button" type="submit">Yes</button>
+        </form>
+      </div>
+    </div>
+    <div class="modal" id="avatar-edit-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          id="avatar-edit-close-button"
+          type="button"
+        ></button>
+        <h2 class="modal__heading">Change profile picture</h2>
+        <form class="modal__form" id="avatar-form" name="avatar-form">
+          <label class="modal__label" for="avatar-link-input">
+            <input
+              class="modal__input"
+              id="avatar-link-input"
+              type="url"
+              name="avatar"
+              placeholder="Image link"
+              required
+            />
+            <span class="modal__error" id="avatar-link-input-error"></span>
+          </label>
+          <button class="modal__button modal__button_disabled" type="submit">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
